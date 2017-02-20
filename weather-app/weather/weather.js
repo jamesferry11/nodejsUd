@@ -1,8 +1,8 @@
 const request = require('request');
 
-var getWeather = () => {
+var getWeather = (lat, lng, callback) => {
     request({
-        url: `https://api.forecast.io/forecast/a3d19b9315b4045166733dd021f43ea/lat/long`,
+        url: `https://api.forecast.io/forecast/a3d19b9315b4045166733dd021f43ea/${lat},${lng}`,
         json: true
     }, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -14,6 +14,4 @@ var getWeather = () => {
     });
 };
 
-
-
-module.exports.getWeather;
+module.exports.getWeather = getWeather;
